@@ -1,0 +1,81 @@
+/** dashboard container
+    1. side by side layout
+    2. full height of the screen */
+.dashboard-container {
+    display: flex; 
+    min-height: 100vh; 
+}
+
+/** main content area so right side of the dashboard
+    1. margin for sidebar on the left
+    2. space inside
+    3. width munus the sidebar
+    5. full height of the screen */
+.dashboard-main {
+    margin-left: 200px;
+    padding: 2rem;
+    width: calc(100% - 200px);
+    background-color: #fb923c;
+    min-height: 100vh;
+}
+
+.dashboard-header {
+    margin-bottom: 2rem; 
+}
+
+/* controls to search and sort tasks
+    1. displayed side by side
+    2. space between the tasks
+ */
+.dashboard-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* search bar */
+.search-input {
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* dropdown to sort */
+.sort-select {
+    padding: 0.75rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* when something is selected or focused on */
+.search-input:focus,
+.sort-select:focus {
+    outline: none;
+    border-color: #d97706;
+}
+
+/* task grid layout */
+.tasks-grid {
+    display: grid;
+    /* Responsive grid - auto-fill creates columns, minmax sets min/max width */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* only apply the CSS inside this block when the screen is 768px wide or smaller */
+@media (max-width: 768px) {
+    .dashboard-main {
+        margin-left: 0; /* No sidebar on mobile */
+        width: 100%; /* Full width */
+    }
+    
+    .dashboard-controls {
+        flex-direction: column; /* Stack search and sort vertically */
+    }
+    
+    .tasks-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+}

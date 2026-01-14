@@ -1,0 +1,51 @@
+/* Sidebar container - fixed on left side */
+.sidebar {
+    width: 200px;
+    height: 100vh; /* Full height of screen */
+    background-color: #ea580c; /* Dark orange/red */
+    padding: 2rem 1rem; /* Space inside */
+    position: fixed; /* Stays in place when scrolling */
+    left: 0;
+    top: 0;
+}
+
+/* Title at top of sidebar */
+.sidebar-title {
+    color: white;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+/* Navigation container */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column; /* Stack links vertically */
+    gap: 1rem; /* Space between links */
+}
+
+/* Each navigation link */
+.sidebar-link {
+    color: white;
+    text-decoration: none; /* Remove underline */
+    padding: 0.75rem 1rem;
+    border-radius: 8px; /* Rounded corners */
+    transition: background-color 0.2s, transform 0.2s; /* Smooth animation */
+}
+
+/* When hovering over link */
+.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light white overlay */
+    transform: scale(0.98); /* Slightly smaller */
+}
+
+/* Active link (current page) */
+.sidebar-link.active {
+    background-color: rgba(255, 255, 255, 0.2); /* More visible white overlay */
+}
+
+/* Responsive design - hide sidebar on mobile */
+@media (max-width: 768px) {
+    .sidebar {
+        display: none; /* Hide sidebar on mobile */
+    }
+}
