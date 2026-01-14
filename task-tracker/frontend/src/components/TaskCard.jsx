@@ -49,7 +49,7 @@ function TaskCard(props) {
             {/* task info -> category, importance, and due date */}
             <div className="task-info">
                 <span className="task-category">{task.category}</span>
-                <span className="task-importance"> {task.importance}/5</span>
+                <span className="task-importance">{task.importance}/5</span>
                 {dueDateText ? <span className="task-due-date">Due: {dueDateText}</span> : null}
             </div>
             

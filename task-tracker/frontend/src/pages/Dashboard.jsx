@@ -16,6 +16,8 @@ function Dashboard() {
     // determines how to sort tasks
     // default is by due date 
     const [sortBy, setSortBy] = useState("due_date");
+    // search term
+    const [searchTerm, setSearchTerm] = useState('');
     // fetches tasks as soon as the component first loads! 
     // first bc its empty
     useEffect(function() {
@@ -41,9 +43,15 @@ function Dashboard() {
         setLoading(false ); 
     }
 
-    // funciton to filter the tasks
+    // function to filter the tasks
     // if it appears in the search or not, so if the title includes anything from search bar
+    // Only filters by title if NOT sorting by category
     function filterTasks() {
+        // If sorting by category, don't filter by title here (category filtering happens in sortTasks)
+        if (sortBy === "category") {
+            return tasks; // Return all tasks, category filtering happens in sortTasks
+        }
+        
         const filtered = []; 
         // loop through the tasks
         for (let i = 0; i < tasks.length; i++) {
@@ -64,7 +72,7 @@ function Dashboard() {
         // copy the array so we don't modify the original
         const sorted = [...taskList]; 
         // sort by due dates
-        if (sortBy == "due_date") {
+        if (sortBy === "due_date") {
             sorted.sort(function(a, b) {
                 const dateA = new Date(a.due_date || 0); 
                 const dateB = new Date(b.due_date || 0); 
@@ -73,10 +81,24 @@ function Dashboard() {
         }
 
         // sort by importance
-        else if (sortBY == "importance") {
+        else if (sortBy === "importance") {
             sorted.sort(function(a, b) {
                 return b.importance - a.importance; 
             }); 
+        }
+        // filter by category (not sort - show only tasks with that category)
+        else if (sortBy === "category") {
+            // Filter tasks to only show ones matching the search term (which should be the category name)
+            const categoryFilter = searchTerm.toLowerCase();
+            const categoryFiltered = [];
+            for (let i = 0; i < sorted.length; i++) {
+                const task = sorted[i];
+                const taskCategory = (task.category || '').toLowerCase();
+                if (taskCategory === categoryFilter || categoryFilter === '') {
+                    categoryFiltered.push(task);
+                }
+            }
+            return categoryFiltered;
         }
         return sorted; 
     }
@@ -124,7 +146,7 @@ function Dashboard() {
         return <div>Loading ...</div>; 
     }
 
-    const filteredtasks = filterTasks(); 
+    const filteredTasks = filterTasks(); 
     const sortedTasks = sortTasks(filteredTasks); 
 
     // return jsx funciton
@@ -140,21 +162,31 @@ function Dashboard() {
                     
                     {/* search and sort controls */}
                     <div className="dashboard-controls">
-                        <input
-                            type="text"
-                            placeholder="Search tasks..."
-                            value={searchTerm}
-                            onChange={handleSearchChange}
-                            className="search-input"
-                        />
+                        {sortBy !== "category" ? (
+                            <input
+                                type="text"
+                                placeholder="Search tasks..."
+                                value={searchTerm}
+                                onChange={handleSearchChange}
+                                className="search-input"
+                            />
+                        ) : (
+                            <input
+                                type="text"
+                                placeholder="Enter category name to filter..."
+                                value={searchTerm}
+                                onChange={handleSearchChange}
+                                className="search-input"
+                            />
+                        )}
                         <select
                             value={sortBy}
-                            onChange={handleSortChange}
+                            onChange={handleSortingChange}
                             className="sort-select"
                         >
                             <option value="due_date">Sort by Due Date</option>
                             <option value="importance">Sort by Importance</option>
-                            <option value="category">Sort by Category</option>
+                            <option value="category">Filter by Category</option>
                         </select>
                     </div>
                 </div>
