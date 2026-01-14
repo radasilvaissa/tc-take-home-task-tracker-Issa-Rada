@@ -15,7 +15,7 @@
     margin-left: 200px;
     padding: 2rem;
     width: calc(100% - 200px);
-    background-color: #fb923c;
+    background-color: #e0f2fe;
     min-height: 100vh;
 }
 
@@ -53,7 +53,7 @@
 .search-input:focus,
 .sort-select:focus {
     outline: none;
-    border-color: #d97706;
+    border-color: #f9a8d4;
 }
 
 /* task grid layout */

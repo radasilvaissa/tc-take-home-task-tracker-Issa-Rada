@@ -1,6 +1,6 @@
 /* Task card container */
 .task-card {
-    background: white;
+    background: #fecaca;
     padding: 1.5rem; /* Space inside */
     border-radius: 12px; /* Rounded corners */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow */
@@ -15,13 +15,13 @@
 
 /* Completed task styling */
 .task-card.completed {
-    background-color: #fde047; /* Light yellow */
+    background-color: #fde68a; /* Pastel yellow - darker */
     text-decoration: line-through; /* Strikethrough text */
 }
 
 /* Pending task styling */
 .task-card.pending {
-    border-left: 4px solid #ea580c; /* Orange accent on left */
+    border-left: 4px solid #f9a8d4; /* Pastel pink accent on left - darker */
 }
 
 /* Task title */
@@ -63,12 +63,12 @@
 
 /* Edit button */
 .edit-button {
-    background-color: #fbbf24; /* Yellow */
-    color: white;
+    background-color: #a7f3d0; /* Pastel green */
+    color: #065f46;
 }
 
 /* Delete button */
 .delete-button {
-    background-color: #f87171; /* Light red */
-    color: white;
+    background-color: #f9a8d4; /* Pastel pink - darker */
+    color: #831843;
 }

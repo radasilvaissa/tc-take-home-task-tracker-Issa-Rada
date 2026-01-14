@@ -31,7 +31,7 @@ function EditTask() {
     // fetchTask = gets task data from backend
     // handled in dashboard with a get request
     async function fetchTask() {
-        const url = 'http://localhost:5000/api/tasks/' + taskId;
+        const url = 'http://localhost:5001/api/tasks/' + taskId;
         const response = await fetch(url);
         
         if (response.ok) {
@@ -50,7 +50,7 @@ function EditTask() {
     async function handleSubmit(event) {
         event.preventDefault();
         
-        const url = 'http://localhost:5000/api/tasks/' + taskId;
+        const url = 'http://localhost:5001/api/tasks/' + taskId;
         const options = {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -75,7 +75,7 @@ function EditTask() {
         const confirmed = window.confirm('Are you sure you want to delete this task?');
         
         if (confirmed) {
-            const url = 'http://localhost:5000/api/tasks/' + taskId;
+            const url = 'http://localhost:5001/api/tasks/' + taskId;
             const options = {
                 method: 'DELETE',
             };

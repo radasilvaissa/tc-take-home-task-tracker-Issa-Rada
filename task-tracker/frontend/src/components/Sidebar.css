@@ -2,7 +2,7 @@
 .sidebar {
     width: 200px;
     height: 100vh; /* Full height of screen */
-    background-color: #ea580c; /* Dark orange/red */
+    background-color: #ddd6fe; /* Pastel purple */
     padding: 2rem 1rem; /* Space inside */
     position: fixed; /* Stays in place when scrolling */
     left: 0;
@@ -11,7 +11,7 @@
 
 /* Title at top of sidebar */
 .sidebar-title {
-    color: white;
+    color: #5b21b6;
     margin-bottom: 2rem;
     font-size: 1.5rem;
 }
@@ -25,7 +25,7 @@
 
 /* Each navigation link */
 .sidebar-link {
-    color: white;
+    color: #5b21b6;
     text-decoration: none; /* Remove underline */
     padding: 0.75rem 1rem;
     border-radius: 8px; /* Rounded corners */
@@ -34,13 +34,13 @@
 
 /* When hovering over link */
 .sidebar-link:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Light white overlay */
+    background-color: #c4b5fd; /* Pastel purple hover - darker */
     transform: scale(0.98); /* Slightly smaller */
 }
 
 /* Active link (current page) */
 .sidebar-link.active {
-    background-color: rgba(255, 255, 255, 0.2); /* More visible white overlay */
+    background-color: #a78bfa; /* Pastel purple active - darker */
 }
 
 /* Responsive design - hide sidebar on mobile */

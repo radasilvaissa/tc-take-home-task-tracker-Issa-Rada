@@ -7,7 +7,7 @@
     margin-left: 200px;
     padding: 2rem;
     width: calc(100% - 200px);
-    background-color: #fb923c;
+    background-color: #fef3c7;
     min-height: 100vh;
 }
 
@@ -28,7 +28,7 @@
 
 .form-input:focus {
     outline: none;
-    border-color: #d97706;
+    border-color: #f9a8d4;
 }
 
 .edit-task-buttons {
@@ -39,8 +39,8 @@
 
 .submit-button {
     padding: 0.75rem;
-    background-color: #d97706;
-    color: white;
+    background-color: #a7f3d0;
+    color: #065f46;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
@@ -55,8 +55,8 @@
 
 .delete-button {
     padding: 0.75rem;
-    background-color: #dc2626;
-    color: white;
+    background-color: #f9a8d4;
+    color: #831843;
     border: none;
     border-radius: 8px;
     font-size: 1rem;

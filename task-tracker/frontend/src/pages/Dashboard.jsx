@@ -28,7 +28,7 @@ function Dashboard() {
     // async as it waits for backend response
     async function fetchTasks() {
         // get request to fetch the tasks from this url (api req)
-        const url = "http://localhost:5000/api/tasks"; 
+        const url = "http://localhost:5001/api/tasks"; 
         const options = {
             method: "GET", 
         }; 
@@ -45,13 +45,7 @@ function Dashboard() {
 
     // function to filter the tasks
     // if it appears in the search or not, so if the title includes anything from search bar
-    // Only filters by title if NOT sorting by category
     function filterTasks() {
-        // If sorting by category, don't filter by title here (category filtering happens in sortTasks)
-        if (sortBy === "category") {
-            return tasks; // Return all tasks, category filtering happens in sortTasks
-        }
-        
         const filtered = []; 
         // loop through the tasks
         for (let i = 0; i < tasks.length; i++) {
@@ -86,20 +80,6 @@ function Dashboard() {
                 return b.importance - a.importance; 
             }); 
         }
-        // filter by category (not sort - show only tasks with that category)
-        else if (sortBy === "category") {
-            // Filter tasks to only show ones matching the search term (which should be the category name)
-            const categoryFilter = searchTerm.toLowerCase();
-            const categoryFiltered = [];
-            for (let i = 0; i < sorted.length; i++) {
-                const task = sorted[i];
-                const taskCategory = (task.category || '').toLowerCase();
-                if (taskCategory === categoryFilter || categoryFilter === '') {
-                    categoryFiltered.push(task);
-                }
-            }
-            return categoryFiltered;
-        }
         return sorted; 
     }
 
@@ -108,7 +88,7 @@ function Dashboard() {
         const confirmed = window.confirm("Are you sure you want to delete the task?"); 
 
         if (confirmed) {
-            const url = "http://localhost:5000/api/tasks/" + taskId;
+            const url = "http://localhost:5001/api/tasks/" + taskId;
             const options = {
                 method: "DELETE", 
             }; 
@@ -162,23 +142,13 @@ function Dashboard() {
                     
                     {/* search and sort controls */}
                     <div className="dashboard-controls">
-                        {sortBy !== "category" ? (
-                            <input
-                                type="text"
-                                placeholder="Search tasks..."
-                                value={searchTerm}
-                                onChange={handleSearchChange}
-                                className="search-input"
-                            />
-                        ) : (
-                            <input
-                                type="text"
-                                placeholder="Enter category name to filter..."
-                                value={searchTerm}
-                                onChange={handleSearchChange}
-                                className="search-input"
-                            />
-                        )}
+                        <input
+                            type="text"
+                            placeholder="Search tasks..."
+                            value={searchTerm}
+                            onChange={handleSearchChange}
+                            className="search-input"
+                        />
                         <select
                             value={sortBy}
                             onChange={handleSortingChange}
@@ -186,7 +156,6 @@ function Dashboard() {
                         >
                             <option value="due_date">Sort by Due Date</option>
                             <option value="importance">Sort by Importance</option>
-                            <option value="category">Filter by Category</option>
                         </select>
                     </div>
                 </div>
