@@ -1,0 +1,74 @@
+/* Task card container */
+.task-card {
+    background: #fecaca;
+    padding: 1.5rem; /* Space inside */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Shadow */
+    transition: transform 0.2s, box-shadow 0.2s; /* Smooth animation */
+}
+
+/* When hovering over card */
+.task-card:hover {
+    transform: scale(0.98); /* Slightly smaller */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Bigger shadow */
+}
+
+/* Completed task styling */
+.task-card.completed {
+    background-color: #fde68a; /* Pastel yellow - darker */
+    text-decoration: line-through; /* Strikethrough text */
+}
+
+/* Pending task styling */
+.task-card.pending {
+    border-left: 4px solid #f9a8d4; /* Pastel pink accent on left - darker */
+}
+
+/* Task title */
+.task-title {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+/* Task info container */
+.task-info {
+    display: flex;
+    flex-direction: column; /* Stack info vertically */
+    gap: 0.5rem; /* Space between items */
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    color: #666; /* Gray text */
+}
+
+/* Action buttons container */
+.task-actions {
+    display: flex;
+    gap: 0.5rem; /* Space between buttons */
+}
+
+/* All task buttons */
+.task-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: transform 0.2s; /* Smooth animation */
+}
+
+/* When hovering over button */
+.task-button:hover {
+    transform: scale(0.95); /* Slightly smaller */
+}
+
+/* Edit button */
+.edit-button {
+    background-color: #a7f3d0; /* Pastel green */
+    color: #065f46;
+}
+
+/* Delete button */
+.delete-button {
+    background-color: #f9a8d4; /* Pastel pink - darker */
+    color: #831843;
+}
